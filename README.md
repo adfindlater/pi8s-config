@@ -1,5 +1,11 @@
 # pi8s cluster setup
 
+Deploy a kubernetes cluster to two or more raspberry pi's.
+
+Requirements:
+- Each raspberry pi has an SD card flashed with Ubuntu 20.04 ARM64
+- The ubuntu user password is the same on each raspberry pi
+
 ## Prepare nodes and create cluster using Terraform
 
 Clone the [terraform-raspberrypi-bootstrap](https://github.com/adfindlater/terraform-raspberrypi-bootstrap) repository and follow the instructions in the README to provision nodes and create a new k8s cluster.
