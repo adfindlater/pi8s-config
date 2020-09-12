@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: elasticsearch
+  namespace: kube-system
+  labels:
+    k8s-app: elasticsearch
+spec:
+  serviceName: elasticsearch
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      k8s-app: elasticsearch
+  template:
+    metadata:
+      labels:
+        k8s-app: elasticsearch
+    spec:
+      serviceAccountName: elasticsearch
+      containers:
+      - image: "gagara/elasticsearch-oss-arm64:7.6.2"
+        name: elasticsearch
+        ports:
+        - containerPort: 9200
+          name: db
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: elasticsearch
+          mountPath: /data
+        env:
+        - name: discovery.type
+          value: "single-node"
+        - name: discovery.seed_hosts
+          value: 127.0.0.1:9300
+        - name: "NAMESPACE"
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+      volumes:
+      - name: elasticsearch
+        emptyDir: {}
+      initContainers:
+      - image: alpine:3.6
+        command: ["/sbin/sysctl", "-w", "vm.max_map_count=262144"]
+        name: elasticsearch-init
+        securityContext:
+          privileged: true
