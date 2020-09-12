@@ -1,0 +1,18 @@
+image: "gagara/elasticsearch-oss-arm64"
+imageTag: "7.6.2"
+
+volumeClaimTemplate:
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 3Gi
+
+replicas: 1
+
+# minimumMasterNodes: 2
+
+# extraEnvs:
+#   - name: discovery.type
+#     value: "single-node"
+#   - name: discovery.seed_hosts
+#     value: 127.0.0.1:9300

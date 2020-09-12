@@ -1,0 +1,15 @@
+image: "gagara/kibana-oss-arm64"
+imageTag: "7.6.2"
+
+resources:
+  requests:
+    cpu: "500m"
+    memory: "1Gi"
+  limits:
+    cpu: "500m"
+    memory: "1Gi"
+
+elasticsearchHosts: "http://elasticsearch:9200"
+
+service:
+  type: LoadBalancer

@@ -1,0 +1,2 @@
+image: "gagara/kibana-oss-arm64"
+imageTag: "7.6.2"

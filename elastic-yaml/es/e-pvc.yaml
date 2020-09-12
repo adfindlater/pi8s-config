@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: "2020-09-05T07:39:43Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app: elasticsearch-master
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:accessModes: {}
+        f:resources:
+          f:requests:
+            .: {}
+            f:storage: {}
+        f:volumeMode: {}
+      f:status:
+        f:phase: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-09-05T07:39:43Z"
+  name: elasticsearch-master-elasticsearch-master-0
+  namespace: kube-system
+  resourceVersion: "1185668"
+  selfLink: /api/v1/namespaces/kube-system/persistentvolumeclaims/elasticsearch-master-elasticsearch-master-0
+  uid: 79c9542d-cab8-46bb-9a5e-4ddbf933b1f7
+spec:
+  storageClassName: manual
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+  volumeMode: Filesystem
+status:
+  phase: Pending
