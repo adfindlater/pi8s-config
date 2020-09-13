@@ -37,4 +37,4 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: elasticsearch
-  apiGroup: ""
+  apiGroup: rbac.authorization.k8s.io
