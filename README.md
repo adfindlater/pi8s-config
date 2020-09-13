@@ -16,20 +16,20 @@ Requirements:
 
 Clone the [terraform-raspberrypi-bootstrap](https://github.com/adfindlater/terraform-raspberrypi-bootstrap) repository and follow the instructions in the README to provision nodes and create a new k8s cluster.
 ```console
-git clone git@github.com:adfindlater/terraform-raspberrypi-bootstrap.git
+$ git clone git@github.com:adfindlater/terraform-raspberrypi-bootstrap.git
 ```
 
 After running `terraform_pis.sh`, verify the existence of the new k8s cluster by coping `~/terraform-raspberrypi-bootstrap/control-plane/kube_config` to `~/.kube/config` and then running
 
 ```console
-kubectl get pods --all-namespaces
+$ kubectl get pods --all-namespaces
 ```
 
 ## Deploy bare-metal load balancer
 
 Deploy a load balancer to the cluster using helm.  Custom configuration values are provided by the `myvalues.yaml` file.
 ```console
-helm install -f pi8s-config/load-balancer/helm/myvalues.yaml metallb bitnami/metallb
+$ helm install -f pi8s-config/load-balancer/helm/myvalues.yaml metallb bitnami/metallb
 ```
 
 `myvalues.yaml`
@@ -57,7 +57,7 @@ controller:
 ## Argo CD 
 
 ```console
-helm install -f pi8s-config/argo-cd/helm/myvalues.yaml argo-cd argo/argo-cd
+$ helm install -f pi8s-config/argo-cd/helm/myvalues.yaml argo-cd argo/argo-cd
 ```
 
 `myvalues.yaml`
@@ -81,12 +81,12 @@ Create a persistent volume in the same namespace that the ELK stack will be depl
 Make sure that k8s can write/read to the host path `/mnt/data` on the worker nodes.
 
 ```console
-kubectl apply -f pi8s-config/elk/pv.yaml -n kube-system
+$ kubectl apply -f pi8s-config/elk/pv.yaml -n kube-system
 ```
 
 Deploy Elasticsearch to the cluster.
 ```console
-kubectl apply -f pi8s-config/elk/es/yaml -n kube-system
+$ kubectl apply -f pi8s-config/elk/es/yaml -n kube-system
 ```
 
 
@@ -116,7 +116,7 @@ filebeatConfig:
 ```
 
 ```console
-helm install -f pi8s-config/elk/filebeat/helm/myvalues.yaml filebeat elastic/filebeat -n kube-system
+$ helm install -f pi8s-config/elk/filebeat/helm/myvalues.yaml filebeat elastic/filebeat -n kube-system
 ```
 
 
@@ -148,7 +148,7 @@ service:
 ```
 
 ```console
-helm install -f pi8s-config/elk/kibana/helm/myvalues.yaml kibana elastic/kibana -n kube-system
+$ helm install -f pi8s-config/elk/kibana/helm/myvalues.yaml kibana elastic/kibana -n kube-system
 ```
 
 
