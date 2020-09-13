@@ -19,7 +19,7 @@ Clone the [terraform-raspberrypi-bootstrap](https://github.com/adfindlater/terra
 git clone git@github.com:adfindlater/terraform-raspberrypi-bootstrap.git
 ```
 
-After running `terraform_pis.sh`, to verify the existence of the new k8s cluster copy `~/terraform-raspberrypi-bootstrap/control-plane/kube_config` to `~/.kube/config` and then run
+After running `terraform_pis.sh`, verify the existence of the new k8s cluster by coping `~/terraform-raspberrypi-bootstrap/control-plane/kube_config` to `~/.kube/config` and then running
 
 ```
 kubectl get pods --all-namespaces
