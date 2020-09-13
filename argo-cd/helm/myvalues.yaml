@@ -1,0 +1,10 @@
+global:
+  image:
+    # https://github.com/argoproj/argo-cd/issues/2167#issuecomment-584936692
+    repository: phillebaba/argocd
+    tag: v1.3.6
+
+server:
+  service:
+    type: LoadBalancer
+  

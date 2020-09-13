@@ -1,6 +1,12 @@
 # pi8s cluster setup
 
-Deploy a kubernetes cluster to two or more raspberry pi's.
+Deploy a kubernetes cluster across two or more raspberry pi's using Terraform.  This repository also contains config and instructions for deploying:
+1. on-cluster load balancer (metallb)
+2. Argo CD continuous delivery tool
+3. centralized logging (ELK stack)
+
+The deploment strategy currently taken is to patch helm charts using `helm install -f myvalues.yaml` when it is convenient.  Otherwise, explicit deployment
+yaml is used.  Helm charts require patching because the x86 images need to be swapped out for corresponding arm64 images (as well as any other custom config that is required).
 
 Requirements:
 - Each raspberry pi has an SD card flashed with Ubuntu 20.04 ARM64
@@ -46,6 +52,25 @@ controller:
     registry: docker.io
     repository: metallb/controller
     tag: v0.9.3
+```
+
+## Argo CD 
+
+```
+helm install -f pi8s-config/argo-cd/helm/myvalues.yaml argo-cd argo/argo-cd
+```
+
+`myvalues.yaml`
+```
+global:
+  image:
+    # https://github.com/argoproj/argo-cd/issues/2167#issuecomment-584936692
+    repository: phillebaba/argocd
+    tag: v1.3.6
+	
+server:
+  service:
+    type: LoadBalancer
 ```
 
 ## Centralized logging with the ELK stack
