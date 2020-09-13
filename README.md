@@ -75,7 +75,8 @@ server:
 
 ## Centralized logging with the ELK stack
 
-### Elasticsearch (currenlty not using Helm)
+### Elasticsearch
+TODO: switch to helm chart
 
 Create a persistent volume in the same namespace that the ELK stack will be deployed. 
 Make sure that k8s can write/read to the host path `/mnt/data` on the worker nodes.
@@ -120,7 +121,8 @@ $ helm install -f pi8s-config/elk/filebeat/helm/myvalues.yaml filebeat elastic/f
 ```
 
 
-### Logstash (currenlty not using Helm)
+### Logstash
+TODO: switch to helm chart
 
 ```
 kubectl apply -f pi8s-config/elk/logstash/yaml -n kube-system
