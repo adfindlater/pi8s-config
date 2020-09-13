@@ -1,7 +1,4 @@
-# [<img src="https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true" width="70"/>]("https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true) pi8s cluster setup
-
-<!-- ![](https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true) -->
-<!-- <img src="https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true width="200" height="200"> -->
+# [<img src="https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true" width="80"/>]("https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true) pi8s cluster config
 
 Deploy a kubernetes cluster across two or more raspberry pi's using Terraform.  This repository also contains config and instructions for deploying:
 1. on-cluster load balancer (metallb)
