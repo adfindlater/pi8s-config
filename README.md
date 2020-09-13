@@ -1,6 +1,6 @@
 # pi8s cluster setup
 
-![](images/table https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true)
+![](https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true)
 
 Deploy a kubernetes cluster across two or more raspberry pi's using Terraform.  This repository also contains config and instructions for deploying:
 1. on-cluster load balancer (metallb)
