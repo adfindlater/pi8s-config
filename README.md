@@ -5,7 +5,7 @@ Deploy a kubernetes cluster across two or more raspberry pi's using Terraform.  
 2. Argo CD continuous delivery tool
 3. centralized logging (ELK stack)
 
-The deploment strategy currently taken is to patch helm charts using `helm install -f myvalues.yaml` when it is convenient.  Otherwise, explicit deployment
+The deployment strategy currently taken is to patch helm charts using `helm install -f myvalues.yaml` when it is convenient.  Otherwise, explicit deployment
 yaml is used.  Helm charts require patching because the x86 images need to be swapped out for corresponding arm64 images (as well as any other custom config that is required).
 
 Requirements:
