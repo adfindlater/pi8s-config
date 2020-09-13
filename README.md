@@ -15,25 +15,25 @@ Requirements:
 ## Prepare nodes and create cluster using Terraform
 
 Clone the [terraform-raspberrypi-bootstrap](https://github.com/adfindlater/terraform-raspberrypi-bootstrap) repository and follow the instructions in the README to provision nodes and create a new k8s cluster.
-```
+```console
 git clone git@github.com:adfindlater/terraform-raspberrypi-bootstrap.git
 ```
 
 After running `terraform_pis.sh`, verify the existence of the new k8s cluster by coping `~/terraform-raspberrypi-bootstrap/control-plane/kube_config` to `~/.kube/config` and then running
 
-```
+```console
 kubectl get pods --all-namespaces
 ```
 
 ## Deploy bare-metal load balancer
 
 Deploy a load balancer to the cluster using helm.  Custom configuration values are provided by the `myvalues.yaml` file.
-```
+```console
 helm install -f pi8s-config/load-balancer/helm/myvalues.yaml metallb bitnami/metallb
 ```
 
 `myvalues.yaml`
-```
+```yaml
 configInline: 
   address-pools:
     - name: default
@@ -56,12 +56,12 @@ controller:
 
 ## Argo CD 
 
-```
+```console
 helm install -f pi8s-config/argo-cd/helm/myvalues.yaml argo-cd argo/argo-cd
 ```
 
 `myvalues.yaml`
-```
+```yaml
 global:
   image:
     # https://github.com/argoproj/argo-cd/issues/2167#issuecomment-584936692
@@ -80,12 +80,12 @@ server:
 Create a persistent volume in the same namespace that the ELK stack will be deployed. 
 Make sure that k8s can write/read to the host path `/mnt/data` on the worker nodes.
 
-```
+```console
 kubectl apply -f pi8s-config/elk/pv.yaml -n kube-system
 ```
 
 Deploy Elasticsearch to the cluster.
-```
+```console
 kubectl apply -f pi8s-config/elk/es/yaml -n kube-system
 ```
 
@@ -95,7 +95,7 @@ kubectl apply -f pi8s-config/elk/es/yaml -n kube-system
 Deploy using helm with customized values.
 
 `myvalues.yaml`
-```
+```yaml
 image: "kasaoden/filebeat"
 imageTag: "7.2.0-arm64"
 
@@ -115,7 +115,7 @@ filebeatConfig:
       hosts: ["logstash-service:5044"]
 ```
 
-```
+```console
 helm install -f pi8s-config/elk/filebeat/helm/myvalues.yaml filebeat elastic/filebeat -n kube-system
 ```
 
@@ -129,7 +129,7 @@ kubectl apply -f pi8s-config/elk/logstash/yaml -n kube-system
 ### Kibana
 
 `myvalues.yaml`
-```
+```yaml
 image: "gagara/kibana-oss-arm64"
 imageTag: "7.6.2"
 
@@ -147,7 +147,7 @@ service:
   type: LoadBalancer
 ```
 
-```
+```console
 helm install -f pi8s-config/elk/kibana/helm/myvalues.yaml kibana elastic/kibana -n kube-system
 ```
 
