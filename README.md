@@ -1,4 +1,4 @@
-# [<img src="https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true" width="50" vertical-align="middle"/>]("https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true) pi8s cluster setup
+# [<img src="https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true" width="50" vertical-align="bottom"/>]("https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true) pi8s cluster setup
 
 <!-- ![](https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true) -->
 <!-- <img src="https://github.com/adfindlater/pi8s-config/blob/master/images/pi8s-logo.png?raw=true width="200" height="200"> -->
