@@ -32,6 +32,7 @@ spec:
               containerPort: 5000
               protocol: TCP
           livenessProbe:
+            periodSeconds: 30            
             httpGet:
               path: /
               port: http
