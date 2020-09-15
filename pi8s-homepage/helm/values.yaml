@@ -37,9 +37,9 @@ securityContext: {}
 #   port: 80
 
 service:
-  type: NodePort
-  port: 5000
-  targetPort: 5000
+  type: LoadBalancer
+  port: 5151
+  targetPort: 5151
   # ports:
   # - port: 5000
   #   targetPort: 5000    
