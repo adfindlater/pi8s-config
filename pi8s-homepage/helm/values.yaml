@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: adfindlater/pi8s-homepage
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: ""
