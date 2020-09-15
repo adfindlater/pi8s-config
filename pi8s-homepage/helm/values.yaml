@@ -38,13 +38,14 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  ports:
-  - port: 5151
-    targetPort: 5151
-    protocol: TCP
-  - port: 5000
-    targetPort: 5000    
-    protocol: TCP
+  port: 5151
+  targetPort: 5151
+  
+  # ports:
+  #   protocol: TCP
+  # - port: 5000
+  #   targetPort: 5000    
+  #   protocol: TCP
   # selector:
   #   app: cloud-ocr-yaml
 
