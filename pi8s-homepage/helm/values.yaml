@@ -38,15 +38,16 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  # port: 5000
-  # targetPort: 5000  
-  ports:
-    protocol: TCP
-  - port: 5000
-    targetPort: 5000    
-    protocol: TCP
-  selector:
-    app: cloud-ocr-yaml
+  port: 5000
+  targetPort: 5000
+
+  # ports:
+  #   protocol: TCP
+  # - port: 5000
+  #   targetPort: 5000    
+  #   protocol: TCP
+  # selector:
+  #   app: cloud-ocr-yaml
 
 ingress:
   enabled: false
